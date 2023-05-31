@@ -1,60 +1,29 @@
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
-import Button from "./component/Button";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import Delete from "./pages/Delete";
+import Newnote from "./pages/Newnote";
+import Readnote from "./pages/Readnote";
 
 export default function App() {
-  const [userData, setUserData] = useState({
-    username: "",
-    password: "",
-  });
-  const onPress = () => {};
+  const Stack = createNativeStackNavigator();
   return (
-    <View style={styles.container}>
-      <TextInput
-        placeholder="username"
-        value={userData.username}
-        onChangeText={(text) => setUserData({ [userData.username]: text })}
-        style={styles.input}
-      />
-      <TextInput
-        placeholder="password"
-        value={userData.password}
-        onChangeText={(text) => setUserData({ [userData.password]: text })}
-        style={styles.input}
-      />
-      <View style={styles.buttonView}>
-        <Button onPress={onPress} title="login" />
-        {/* <Button
-          title="L0gin"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        /> */}
-      </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Dashboard" component={Dashboard} />
+        <Stack.Screen name="Newnote" component={Newnote} />
+        <Stack.Screen name="Readnote" component={Readnote} />
+        <Stack.Screen name="Delete" component={Delete} />
+      </Stack.Navigator>
       <StatusBar style="auto" />
-    </View>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#6A5ACD",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  input: {
-    height: 45,
-    width: "90%",
-    margin: 12,
-    borderWidth: 1,
-    paddingHorizontal: 30,
-    paddingVertical: 10,
-    borderRadius: 10,
-    borderColor: "#fff",
-    fontSize: 18,
-  },
-  buttonView: {
-    width: "60%",
-  },
+  container: {},
 });
