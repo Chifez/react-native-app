@@ -1,6 +1,14 @@
 import { Text, View, Button, Image, StyleSheet } from "react-native";
+// import { Icon } from "react-native-vector-icons/FontAwesome5";
+import { AntDesign } from "@expo/vector-icons";
+import { useContext } from "react";
+import AuthContext from "../../app/context/AuthContext";
 
 const Home = ({ navigation }) => {
+  const { user } = useContext(AuthContext);
+  const HandleNav = () => {
+    user ? navigation.navigate("Dashboard") : navigation.navigate("SignIn");
+  };
   return (
     <View style={styles.container}>
       <Image source={require("../../assets/svg.png")} />
@@ -8,9 +16,12 @@ const Home = ({ navigation }) => {
       <Text style={styles.SubText}>
         Dive right in and clear that mind of yours by writing your thougts down
       </Text>
-      <Button
-        title="go to next page"
-        onPress={() => navigation.navigate("Dashboard")}
+      <AntDesign
+        name="rightcircle"
+        size={60}
+        color="black"
+        style={styles.icon}
+        onPress={HandleNav}
       />
     </View>
   );
@@ -20,11 +31,13 @@ const styles = StyleSheet.create({
   container: {
     height: "100%",
     flex: 1,
+    alignItems: "center",
+    position: "relative",
   },
   image: {},
   Maintext: {
     fontFamily: "otama",
-    fontSize: 60,
+    fontSize: 58,
     textAlign: "center",
     lineHeight: 58,
     marginTop: 45,
@@ -34,7 +47,13 @@ const styles = StyleSheet.create({
     color: "#686868",
     textAlign: "center",
     fontSize: 16,
-    lineHeight: 22,
+    lineHeight: 25,
+  },
+  icon: {
+    position: "absolute",
+    bottom: 50,
+    fontWeight: 100,
+    // marginTop: 8,
   },
 });
 

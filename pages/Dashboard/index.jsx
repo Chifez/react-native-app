@@ -1,4 +1,5 @@
 import { Text, View, Button } from "react-native";
+import ProtectedRoute from "../../component/ProtectedRoute";
 
 const Dashboard = ({ navigation }) => {
   return (
