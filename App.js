@@ -18,6 +18,7 @@ import SignUp from "./pages/Auth/SignUp";
 
 export default function App() {
   const [user, setUser] = useState(true);
+
   const [isLoaded] = useFonts({
     otama: require("./assets/font/Otama-ep.otf"),
   });
@@ -30,18 +31,60 @@ export default function App() {
     <NavigationContainer>
       <AuthContext.Provider value={{ user, setUser }}>
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{
+              headerShown: false,
+            }}
+          />
           {user ? (
             <>
-              <Stack.Screen name="Dashboard" component={Dashboard} />
-              <Stack.Screen name="Newnote" component={Newnote} />
-              <Stack.Screen name="Readnote" component={Readnote} />
-              <Stack.Screen name="Delete" component={Delete} />
+              <Stack.Screen
+                name="Dashboard"
+                component={Dashboard}
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="Newnote"
+                component={Newnote}
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="Readnote"
+                component={Readnote}
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="Delete"
+                component={Delete}
+                options={{
+                  headerShown: false,
+                }}
+              />
             </>
           ) : (
             <>
-              <Stack.Screen name="SignIn" component={SignIn} />
-              <Stack.Screen name="SignUp" component={SignUp} />
+              <Stack.Screen
+                name="SignIn"
+                component={SignIn}
+                options={{
+                  headerShown: false, // Removes the default header introduced by the Navigator
+                }}
+              />
+              <Stack.Screen
+                name="SignUp"
+                component={SignUp}
+                options={{
+                  headerShown: false,
+                }}
+              />
             </>
           )}
         </Stack.Navigator>
