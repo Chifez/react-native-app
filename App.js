@@ -13,14 +13,17 @@ import Newnote from "./pages/Newnote";
 import Readnote from "./pages/Readnote";
 import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
+import { Note } from "./app/data/NoteData";
 
 // SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [user, setUser] = useState(true);
+  const [NoteList, setNoteList] = useState(Note);
 
   const [isLoaded] = useFonts({
     otama: require("./assets/font/Otama-ep.otf"),
+    roboto: require("./assets/font/Roboto-Regular.ttf"),
   });
 
   if (!isLoaded) return null;
@@ -29,7 +32,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <AuthContext.Provider value={{ user, setUser }}>
+      <AuthContext.Provider value={{ user, setUser, NoteList, setNoteList }}>
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen
             name="Home"

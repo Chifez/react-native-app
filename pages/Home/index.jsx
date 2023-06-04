@@ -1,15 +1,8 @@
-import {
-  Text,
-  View,
-  Button,
-  Image,
-  StyleSheet,
-  SafeAreaView,
-} from "react-native";
-// import { Icon } from "react-native-vector-icons/FontAwesome5";
+import { Text, Image, SafeAreaView, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useContext } from "react";
 import AuthContext from "../../app/context/AuthContext";
+import styles from "./Home.style";
 
 const Home = ({ navigation }) => {
   const { user } = useContext(AuthContext);
@@ -18,8 +11,14 @@ const Home = ({ navigation }) => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <Image source={require("../../assets/svg.png")} style={styles.image} />
-      <Text style={styles.Maintext}>All thougths one place</Text>
+      <View style={styles.imageContainer}>
+        <Image
+          source={require("../../assets/svg.png")}
+          style={styles.image}
+          resizeMode="cover"
+        />
+      </View>
+      <Text style={styles.Maintext}>All thoughts. One place.</Text>
       <Text style={styles.SubText}>
         Dive right in and clear that mind of yours by writing your thougts down
       </Text>
@@ -33,37 +32,5 @@ const Home = ({ navigation }) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    height: "100%",
-    flex: 1,
-    alignItems: "center",
-    position: "relative",
-    marginVertical: 40,
-  },
-  image: {},
-  Maintext: {
-    fontFamily: "otama",
-    fontSize: 58,
-    textAlign: "center",
-    lineHeight: 58,
-    marginTop: 55,
-    marginBottom: 25,
-  },
-  SubText: {
-    color: "#686868",
-    textAlign: "center",
-    fontSize: 16,
-    marginTop: 15,
-    lineHeight: 25,
-  },
-  icon: {
-    position: "absolute",
-    bottom: 20,
-    fontWeight: 100,
-    // marginTop: 8,
-  },
-});
 
 export default Home;

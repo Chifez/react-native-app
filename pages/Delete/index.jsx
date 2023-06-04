@@ -1,15 +1,46 @@
-import { Text, View, Button } from "react-native";
+import { Text, View, SafeAreaView, Image } from "react-native";
+import { Note } from "../../app/data/NoteData";
+import { useContext } from "react";
+import AuthContext from "../../app/context/AuthContext";
+import styles from "./delete.style";
+import { AntDesign } from "@expo/vector-icons";
+import Button from "../../component/Button";
 
-const Delete = ({ navigation }) => {
+const Delete = ({ route, navigation }) => {
+  const {
+    itemID: { id },
+  } = route.params;
+  const { NoteList, setNoteList } = useContext(AuthContext);
+  const Handledelete = (id) => {
+    const NewNote = NoteList.filter((item) => item.id !== id);
+    setNoteList(NewNote);
+    return navigation.goBack();
+  };
   return (
-    <View>
-      <Text>Delete</Text>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <AntDesign
+          name="leftcircle"
+          size={45}
+          color="black"
+          style={styles.icon}
+          onPress={() => navigation.goBack()}
+        />
+      </View>
+      <View style={styles.image}>
+        <Image source={require("../../assets/hero.png")} resizeMode="cover" />
+      </View>
+      <Text style={styles.mainText}>You sure about this?</Text>
+      <Text style={styles.subText}>
+        if you delete this note fear not, it can still be recovered in your bin
+      </Text>
       <Button
-        title=" go to Readnote"
-        onPress={() => navigation.navigate("Readnote")}
+        title="delete this note"
+        onPress={() => Handledelete(id)}
+        styleMain={styles.deleteBtn}
+        styleTitle={styles.deleteBtnText}
       />
-      <Button title="go back" onPress={() => navigation.goBack()} />
-    </View>
+    </SafeAreaView>
   );
 };
 
