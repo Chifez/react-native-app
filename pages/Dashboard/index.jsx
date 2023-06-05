@@ -13,11 +13,15 @@ import { Note } from "../../app/data/NoteData";
 import Card from "../../component/Card";
 import Button from "../../component/Button";
 import styles from "./dashboard.style";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import AuthContext from "../../app/context/AuthContext";
 
 const Dashboard = ({ navigation }) => {
-  const { NoteList } = useContext(AuthContext);
+  const { NoteList, setNoteList } = useContext(AuthContext);
+
+  // useEffect(() => {
+  //   setNoteList(NoteList);
+  // }, [NoteList]);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -45,16 +49,18 @@ const Dashboard = ({ navigation }) => {
         </View>
       </View>
       <View>
-        <FlatList
-          numColumns={2}
-          contentContainerStyle={{ paddingBottom: 150 }}
-          data={NoteList}
-          renderItem={({ item }) => (
-            <Card item={item} navigation={navigation} />
-          )}
-          keyExtractor={(item) => item.id}
-          showsVerticalScrollIndicator={false}
-        />
+        {NoteList && (
+          <FlatList
+            numColumns={2}
+            contentContainerStyle={{ paddingBottom: 150 }}
+            data={NoteList}
+            renderItem={({ item }) => (
+              <Card item={item} navigation={navigation} key={item.id} />
+            )}
+            keyExtractor={(item) => item.id}
+            showsVerticalScrollIndicator={false}
+          />
+        )}
       </View>
       <Ionicons
         name="add-circle"

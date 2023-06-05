@@ -1,5 +1,4 @@
 import { Text, View, SafeAreaView, Image } from "react-native";
-import { Note } from "../../app/data/NoteData";
 import { useContext } from "react";
 import AuthContext from "../../app/context/AuthContext";
 import styles from "./delete.style";
@@ -12,8 +11,8 @@ const Delete = ({ route, navigation }) => {
   } = route.params;
   const { NoteList, setNoteList } = useContext(AuthContext);
   const Handledelete = (id) => {
-    const NewNote = NoteList.filter((item) => item.id !== id);
-    setNoteList(NewNote);
+    const NewNoteList = NoteList.filter((item) => item.id !== id);
+    setNoteList(NewNoteList);
     return navigation.goBack();
   };
   return (

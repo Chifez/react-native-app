@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -19,13 +19,14 @@ import { Note } from "./app/data/NoteData";
 
 export default function App() {
   const [user, setUser] = useState(true);
-  const [NoteList, setNoteList] = useState(Note);
-
+  const [NoteList, setNoteList] = useState(NoteList);
   const [isLoaded] = useFonts({
     otama: require("./assets/font/Otama-ep.otf"),
     roboto: require("./assets/font/Roboto-Regular.ttf"),
   });
-
+  useEffect(() => {
+    setNoteList(Note);
+  }, []);
   if (!isLoaded) return null;
 
   const Stack = createNativeStackNavigator();
