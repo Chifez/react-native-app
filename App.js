@@ -22,6 +22,8 @@ export default function App() {
     title: "",
     text: "",
     bgcolor: color,
+    textDate: "",
+    numberDate: "",
   });
   const [isLoaded] = useFonts({
     otama: require("./assets/font/Otama-ep.otf"),

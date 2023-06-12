@@ -4,7 +4,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 
 const Card = ({ item, navigation }) => {
-  const { title, text, bgcolor } = item;
+  const { title, text, bgcolor, numberDate } = item;
   const handleNavigate = (link) => {
     return navigation.navigate(`${link}`, { itemID: item });
   };
@@ -24,7 +24,7 @@ const Card = ({ item, navigation }) => {
         <TouchableOpacity onPress={() => handleNavigate("Delete")}>
           <MaterialCommunityIcons name="delete-outline" size={24} color="red" />
         </TouchableOpacity>
-        <Text style={styles.datetext}>22/01/2023</Text>
+        <Text style={styles.datetext}>{numberDate}</Text>
       </View>
     </TouchableOpacity>
   );

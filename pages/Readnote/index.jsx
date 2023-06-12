@@ -16,7 +16,7 @@ const Readnote = ({ route, navigation }) => {
     setReadMode((prev) => !prev);
   };
   const {
-    itemID: { title, text },
+    itemID: { title, text, textDate },
   } = route.params;
 
   return (
@@ -43,7 +43,7 @@ const Readnote = ({ route, navigation }) => {
       {!readMode && (
         <View style={styles.main}>
           <Text style={styles.maintitle}>{title}</Text>
-          <Text style={styles.maindate}>Saturday, 20th of March</Text>
+          <Text style={styles.maindate}>{textDate}</Text>
         </View>
       )}
       <ScrollView style={styles.body}>
