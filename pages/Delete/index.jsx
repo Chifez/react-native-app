@@ -10,11 +10,15 @@ const Delete = ({ route, navigation }) => {
     itemID: { id },
   } = route.params;
   const { NoteList, setNoteList } = useContext(AuthContext);
+
   const Handledelete = (id) => {
     const NewNoteList = NoteList.filter((item) => item.id !== id);
     setNoteList(NewNoteList);
+    console.log(NoteList);
+    console.log(NewNoteList);
     return navigation.goBack();
   };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>

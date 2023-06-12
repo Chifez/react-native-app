@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     backgroundColor: "transparent",
     paddingLeft: 20,
+    paddingRight: 90,
     paddingVertical: 12,
     marginRight: 10,
     fontSize: 18,
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
     backgroundColor: "green",
     borderRadius: 200,
     zIndex: 2,
-    width: 45,
+    width: 80,
     height: 45,
     margin: 5,
   },
@@ -61,6 +62,20 @@ const styles = StyleSheet.create({
   NoteList: {
     fontFamily: "roboto",
     fontSize: 23,
+  },
+  emptyContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%",
+    width: "100%",
+    textAlign: "center",
+    paddingBottom: 200,
+  },
+  empty: {
+    fontSize: 25,
+    fontStyle: "italic",
   },
   cards: {
     flex: 1,

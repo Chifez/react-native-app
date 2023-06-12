@@ -1,27 +1,13 @@
-import {
-  Text,
-  View,
-  // Button,
-  SafeAreaView,
-  StyleSheet,
-  TextInput,
-  ScrollView,
-  FlatList,
-} from "react-native";
+import { Text, View, TextInput, FlatList } from "react-native";
 import { AntDesign, Ionicons, EvilIcons } from "@expo/vector-icons";
-import { Note } from "../../app/data/NoteData";
 import Card from "../../component/Card";
-import Button from "../../component/Button";
 import styles from "./dashboard.style";
 import { useContext, useEffect } from "react";
 import AuthContext from "../../app/context/AuthContext";
 
 const Dashboard = ({ navigation }) => {
-  const { NoteList, setNoteList } = useContext(AuthContext);
+  const { NoteList } = useContext(AuthContext);
 
-  // useEffect(() => {
-  //   setNoteList(NoteList);
-  // }, [NoteList]);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -48,20 +34,24 @@ const Dashboard = ({ navigation }) => {
           <Text style={styles.NoteList}>Notes</Text>
         </View>
       </View>
-      <View>
-        {NoteList && (
+      {NoteList.length === 0 ? (
+        <View style={styles.emptyContainer}>
+          <Text style={styles.empty}>empty Note</Text>
+        </View>
+      ) : (
+        <View>
           <FlatList
             numColumns={2}
             contentContainerStyle={{ paddingBottom: 150 }}
             data={NoteList}
-            renderItem={({ item }) => (
+            renderItem={({ item, index }) => (
               <Card item={item} navigation={navigation} key={item.id} />
             )}
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
           />
-        )}
-      </View>
+        </View>
+      )}
       <Ionicons
         name="add-circle"
         size={60}

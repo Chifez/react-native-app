@@ -4,14 +4,17 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 
 const Card = ({ item, navigation }) => {
-  const { title, text } = item;
+  const { title, text, bgcolor } = item;
   const handleNavigate = (link) => {
     return navigation.navigate(`${link}`, { itemID: item });
   };
   return (
     <TouchableOpacity
       onPress={() => handleNavigate("Readnote")}
-      style={styles.item}
+      style={[
+        styles.item,
+        { backgroundColor: `${bgcolor ? bgcolor : `#93CAED`}` },
+      ]}
     >
       <Text style={styles.maintext}>{title}</Text>
       <Text style={styles.subtext} numberOfLines={5}>

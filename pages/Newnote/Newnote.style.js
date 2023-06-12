@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     height: "83%",
   },
   inputTitle: {
-    height: "10%",
     borderColor: "#686868",
     borderWidth: 1.5,
     borderRadius: 40,
@@ -31,6 +30,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 10,
     backgroundColor: "",
+    padding: 10,
+    fontSize: 18,
   },
   addContainer: {
     display: "flex",

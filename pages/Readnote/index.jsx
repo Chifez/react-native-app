@@ -1,7 +1,6 @@
 import {
   Text,
   View,
-  Button,
   SafeAreaView,
   ScrollView,
   TouchableOpacity,
@@ -19,6 +18,7 @@ const Readnote = ({ route, navigation }) => {
   const {
     itemID: { title, text },
   } = route.params;
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>

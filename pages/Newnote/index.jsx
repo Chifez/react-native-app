@@ -1,23 +1,30 @@
-import { Text, View, Button, TextInput, SafeAreaView } from "react-native";
+import { View, TextInput, SafeAreaView } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { useState, useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../app/context/AuthContext";
 import styles from "./Newnote.style";
 import { Ionicons } from "@expo/vector-icons";
 
 const Newnote = ({ navigation }) => {
-  const [NewNote, setNewNote] = useState({
-    id: null,
-    title: "",
-    text: "",
-  });
-  const { NoteList } = useContext(AuthContext);
+  const { NoteList, setNoteList, NewNote, setNewNote, setColor, color } =
+    useContext(AuthContext);
   const bgColours = ["#92a8d1", "#034f84", "#0C134F", "#472183", "#1C315E"];
+  const generateBg = () => {
+    setColor(bgColours[Math.floor(Math.random() * 5)]);
+    console.log(color);
+    return setNewNote((NewNote.bgcolor = color));
+  };
 
   const handleSubmit = () => {
-    NoteList.push({ ...NewNote });
-    console.log(NoteList, NewNote.id);
-    console.log(NoteList.length + 1);
+    if (NewNote.title == "" && NewNote.text == "") {
+      return alert("cannot add incomplete note");
+    } else {
+      generateBg();
+      setNoteList([...NoteList, { ...NewNote }]);
+      console.log(NoteList);
+      console.log(NewNote.bgcolor);
+      console.log(NoteList.length + 1);
+    }
     return navigation.goBack();
   };
 
@@ -42,12 +49,14 @@ const Newnote = ({ navigation }) => {
         <TextInput
           placeholder="write your notes here"
           multiline
+          textAlignVertical="top"
           style={styles.inputText}
           onChangeText={(val) =>
             setNewNote({
               ...NewNote,
               text: val,
               id: Number(NoteList.length + 1),
+              // bgcolor: generateBg(),
             })
           }
         />
@@ -59,7 +68,7 @@ const Newnote = ({ navigation }) => {
           size={60}
           color="black"
           style={styles.add}
-          onPress={handleSubmit}
+          onPress={() => handleSubmit()}
         />
       </View>
     </SafeAreaView>
