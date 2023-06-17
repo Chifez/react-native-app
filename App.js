@@ -12,6 +12,8 @@ import Readnote from "./pages/Readnote";
 import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
 import { Note } from "./app/data/NoteData";
+import Editnote from "./pages/Edit";
+import Bin from "./pages/Bin";
 
 export default function App() {
   const [user, setUser] = useState(true);
@@ -82,6 +84,20 @@ export default function App() {
               <Stack.Screen
                 name="Delete"
                 component={Delete}
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="Editnote"
+                component={Editnote}
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="Bin"
+                component={Bin}
                 options={{
                   headerShown: false,
                 }}

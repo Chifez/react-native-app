@@ -16,7 +16,10 @@ const Card = ({ item, navigation }) => {
         { backgroundColor: `${bgcolor ? bgcolor : `#93CAED`}` },
       ]}
     >
-      <Text style={styles.maintext}>{title}</Text>
+      <View>
+        <Text style={styles.maintext}>{title}</Text>
+        <Text>edit</Text> {/*find a suitable icon and style for this*/}
+      </View>
       <Text style={styles.subtext} numberOfLines={5}>
         {text}
       </Text>
