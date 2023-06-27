@@ -72,8 +72,8 @@ const Newnote = ({ navigation }) => {
     } else {
       generateBg();
       getNoteDate();
-      setNoteList([...NoteList, { ...NewNote }]);
-      console.log(NoteList);
+      setNoteList([...NoteList, NewNote]);
+      console.log(NoteList, NewNote);
       console.log(NewNote.bgcolor);
       console.log(NoteList.length + 1);
     }
@@ -120,7 +120,7 @@ const Newnote = ({ navigation }) => {
           size={60}
           color="black"
           style={styles.add}
-          onPress={() => handleSubmit()}
+          onPress={handleSubmit}
         />
       </View>
     </SafeAreaView>

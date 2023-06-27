@@ -60,7 +60,7 @@ const Dashboard = ({ navigation }) => {
           <Text style={styles.empty}> No Results </Text>
         </View>
       )}
-      {searchInput == "" && NoteList.length === 0 ? (
+      {searchInput === "" && NoteList.length === 0 ? (
         <View style={styles.emptyContainer}>
           <Text style={styles.empty}>empty Note</Text>
         </View>

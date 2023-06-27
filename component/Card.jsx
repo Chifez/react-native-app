@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
 import React from "react";
 
@@ -16,9 +17,12 @@ const Card = ({ item, navigation }) => {
         { backgroundColor: `${bgcolor ? bgcolor : `#93CAED`}` },
       ]}
     >
-      <View>
+      <View style={styles.cardHeader}>
         <Text style={styles.maintext}>{title}</Text>
-        <Text>edit</Text> {/*find a suitable icon and style for this*/}
+        <TouchableOpacity onPress={() => handleNavigate("Editnote")}>
+          <Feather name="edit" size={24} color="black" />
+        </TouchableOpacity>
+        {/* <Text>edit</Text> */}
       </View>
       <Text style={styles.subtext} numberOfLines={5}>
         {text}
@@ -46,6 +50,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 8,
     backgroundColor: "#93CAED",
+  },
+  cardHeader: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   maintext: {
     fontFamily: "otama",

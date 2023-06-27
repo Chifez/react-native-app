@@ -6,6 +6,10 @@ import styles from "./Editnote.style";
 import { Ionicons } from "@expo/vector-icons";
 
 const Editnote = ({ route, navigation }) => {
+  const {
+    itemID: { id, title, text, textDate, numberDate },
+  } = route.params;
+
   const [editNote, setEditNote] = useState({
     editTitle: title,
     editText: text,
@@ -14,10 +18,6 @@ const Editnote = ({ route, navigation }) => {
   });
 
   const { editTitle, editText, editNumberDate, editTextDate } = editNote;
-
-  const {
-    itemID: { id, title, text, textDate, numberDate },
-  } = route.params;
 
   const { NoteList, setNoteList } = useContext(AuthContext);
   const months = [
